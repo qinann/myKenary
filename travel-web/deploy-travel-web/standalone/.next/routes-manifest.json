@@ -1,0 +1,1292 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "/admin",
+  "redirects": [
+    {
+      "source": "/admin/",
+      "destination": "/admin",
+      "basePath": false,
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^/admin/$"
+    },
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "dynamicRoutes": [
+    {
+      "page": "/api/auth/[...nextauth]",
+      "regex": "^/api/auth/(.+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPnextauth": "nxtPnextauth"
+      },
+      "namedRegex": "^/api/auth/(?<nxtPnextauth>.+?)(?:/)?$"
+    },
+    {
+      "page": "/api/buses/[id]",
+      "regex": "^/api/buses/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/buses/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/contacts/[id]",
+      "regex": "^/api/contacts/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/contacts/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/conversations/[id]",
+      "regex": "^/api/conversations/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/conversations/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/projects/[id]",
+      "regex": "^/api/projects/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/projects/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/students/[id]",
+      "regex": "^/api/students/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/students/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/tour-leaders/[id]",
+      "regex": "^/api/tour\\-leaders/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/tour\\-leaders/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/concepts/customers/customer-details/[id]",
+      "regex": "^/concepts/customers/customer\\-details/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/concepts/customers/customer\\-details/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/concepts/customers/customer-edit/[id]",
+      "regex": "^/concepts/customers/customer\\-edit/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/concepts/customers/customer\\-edit/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/concepts/help-center/article/[id]",
+      "regex": "^/concepts/help\\-center/article/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/concepts/help\\-center/article/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/concepts/help-center/edit-article/[id]",
+      "regex": "^/concepts/help\\-center/edit\\-article/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/concepts/help\\-center/edit\\-article/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/concepts/orders/order-details/[id]",
+      "regex": "^/concepts/orders/order\\-details/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/concepts/orders/order\\-details/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/concepts/orders/order-edit/[id]",
+      "regex": "^/concepts/orders/order\\-edit/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/concepts/orders/order\\-edit/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/concepts/products/product-edit/[id]",
+      "regex": "^/concepts/products/product\\-edit/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/concepts/products/product\\-edit/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/concepts/projects/project-details/[id]",
+      "regex": "^/concepts/projects/project\\-details/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/concepts/projects/project\\-details/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/concepts/projects/tasks/[id]",
+      "regex": "^/concepts/projects/tasks/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/concepts/projects/tasks/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/dashboards/bus-info/[busId]",
+      "regex": "^/dashboards/bus\\-info/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPbusId": "nxtPbusId"
+      },
+      "namedRegex": "^/dashboards/bus\\-info/(?<nxtPbusId>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/access-denied",
+      "regex": "^/access\\-denied(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/access\\-denied(?:/)?$"
+    },
+    {
+      "page": "/auth/forgot-password-side",
+      "regex": "^/auth/forgot\\-password\\-side(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/forgot\\-password\\-side(?:/)?$"
+    },
+    {
+      "page": "/auth/forgot-password-simple",
+      "regex": "^/auth/forgot\\-password\\-simple(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/forgot\\-password\\-simple(?:/)?$"
+    },
+    {
+      "page": "/auth/forgot-password-split",
+      "regex": "^/auth/forgot\\-password\\-split(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/forgot\\-password\\-split(?:/)?$"
+    },
+    {
+      "page": "/auth/otp-verification-side",
+      "regex": "^/auth/otp\\-verification\\-side(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/otp\\-verification\\-side(?:/)?$"
+    },
+    {
+      "page": "/auth/otp-verification-simple",
+      "regex": "^/auth/otp\\-verification\\-simple(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/otp\\-verification\\-simple(?:/)?$"
+    },
+    {
+      "page": "/auth/otp-verification-split",
+      "regex": "^/auth/otp\\-verification\\-split(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/otp\\-verification\\-split(?:/)?$"
+    },
+    {
+      "page": "/auth/reset-password-side",
+      "regex": "^/auth/reset\\-password\\-side(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/reset\\-password\\-side(?:/)?$"
+    },
+    {
+      "page": "/auth/reset-password-simple",
+      "regex": "^/auth/reset\\-password\\-simple(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/reset\\-password\\-simple(?:/)?$"
+    },
+    {
+      "page": "/auth/reset-password-split",
+      "regex": "^/auth/reset\\-password\\-split(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/reset\\-password\\-split(?:/)?$"
+    },
+    {
+      "page": "/auth/sign-in-side",
+      "regex": "^/auth/sign\\-in\\-side(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/sign\\-in\\-side(?:/)?$"
+    },
+    {
+      "page": "/auth/sign-in-simple",
+      "regex": "^/auth/sign\\-in\\-simple(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/sign\\-in\\-simple(?:/)?$"
+    },
+    {
+      "page": "/auth/sign-in-split",
+      "regex": "^/auth/sign\\-in\\-split(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/sign\\-in\\-split(?:/)?$"
+    },
+    {
+      "page": "/auth/sign-up-side",
+      "regex": "^/auth/sign\\-up\\-side(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/sign\\-up\\-side(?:/)?$"
+    },
+    {
+      "page": "/auth/sign-up-simple",
+      "regex": "^/auth/sign\\-up\\-simple(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/sign\\-up\\-simple(?:/)?$"
+    },
+    {
+      "page": "/auth/sign-up-split",
+      "regex": "^/auth/sign\\-up\\-split(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/sign\\-up\\-split(?:/)?$"
+    },
+    {
+      "page": "/concepts/account/activity-log",
+      "regex": "^/concepts/account/activity\\-log(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/account/activity\\-log(?:/)?$"
+    },
+    {
+      "page": "/concepts/account/pricing",
+      "regex": "^/concepts/account/pricing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/account/pricing(?:/)?$"
+    },
+    {
+      "page": "/concepts/account/roles-permissions",
+      "regex": "^/concepts/account/roles\\-permissions(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/account/roles\\-permissions(?:/)?$"
+    },
+    {
+      "page": "/concepts/account/settings",
+      "regex": "^/concepts/account/settings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/account/settings(?:/)?$"
+    },
+    {
+      "page": "/concepts/ai/chat",
+      "regex": "^/concepts/ai/chat(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/ai/chat(?:/)?$"
+    },
+    {
+      "page": "/concepts/ai/image",
+      "regex": "^/concepts/ai/image(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/ai/image(?:/)?$"
+    },
+    {
+      "page": "/concepts/calendar",
+      "regex": "^/concepts/calendar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/calendar(?:/)?$"
+    },
+    {
+      "page": "/concepts/chat",
+      "regex": "^/concepts/chat(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/chat(?:/)?$"
+    },
+    {
+      "page": "/concepts/customers/customer-create",
+      "regex": "^/concepts/customers/customer\\-create(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/customers/customer\\-create(?:/)?$"
+    },
+    {
+      "page": "/concepts/customers/customer-list",
+      "regex": "^/concepts/customers/customer\\-list(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/customers/customer\\-list(?:/)?$"
+    },
+    {
+      "page": "/concepts/file-manager",
+      "regex": "^/concepts/file\\-manager(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/file\\-manager(?:/)?$"
+    },
+    {
+      "page": "/concepts/help-center/manage-article",
+      "regex": "^/concepts/help\\-center/manage\\-article(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/help\\-center/manage\\-article(?:/)?$"
+    },
+    {
+      "page": "/concepts/help-center/support-hub",
+      "regex": "^/concepts/help\\-center/support\\-hub(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/help\\-center/support\\-hub(?:/)?$"
+    },
+    {
+      "page": "/concepts/mail",
+      "regex": "^/concepts/mail(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/mail(?:/)?$"
+    },
+    {
+      "page": "/concepts/orders/order-create",
+      "regex": "^/concepts/orders/order\\-create(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/orders/order\\-create(?:/)?$"
+    },
+    {
+      "page": "/concepts/orders/order-list",
+      "regex": "^/concepts/orders/order\\-list(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/orders/order\\-list(?:/)?$"
+    },
+    {
+      "page": "/concepts/products/product-create",
+      "regex": "^/concepts/products/product\\-create(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/products/product\\-create(?:/)?$"
+    },
+    {
+      "page": "/concepts/products/product-list",
+      "regex": "^/concepts/products/product\\-list(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/products/product\\-list(?:/)?$"
+    },
+    {
+      "page": "/concepts/projects/project-list",
+      "regex": "^/concepts/projects/project\\-list(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/projects/project\\-list(?:/)?$"
+    },
+    {
+      "page": "/concepts/projects/scrum-board",
+      "regex": "^/concepts/projects/scrum\\-board(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/projects/scrum\\-board(?:/)?$"
+    },
+    {
+      "page": "/concepts/projects/tasks",
+      "regex": "^/concepts/projects/tasks(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/concepts/projects/tasks(?:/)?$"
+    },
+    {
+      "page": "/dashboards/analytic",
+      "regex": "^/dashboards/analytic(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/analytic(?:/)?$"
+    },
+    {
+      "page": "/dashboards/booklet",
+      "regex": "^/dashboards/booklet(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/booklet(?:/)?$"
+    },
+    {
+      "page": "/dashboards/bus-info",
+      "regex": "^/dashboards/bus\\-info(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/bus\\-info(?:/)?$"
+    },
+    {
+      "page": "/dashboards/contact",
+      "regex": "^/dashboards/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/contact(?:/)?$"
+    },
+    {
+      "page": "/dashboards/drivers",
+      "regex": "^/dashboards/drivers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/drivers(?:/)?$"
+    },
+    {
+      "page": "/dashboards/ecommerce",
+      "regex": "^/dashboards/ecommerce(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/ecommerce(?:/)?$"
+    },
+    {
+      "page": "/dashboards/gallery",
+      "regex": "^/dashboards/gallery(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/gallery(?:/)?$"
+    },
+    {
+      "page": "/dashboards/hotel",
+      "regex": "^/dashboards/hotel(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/hotel(?:/)?$"
+    },
+    {
+      "page": "/dashboards/live-location",
+      "regex": "^/dashboards/live\\-location(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/live\\-location(?:/)?$"
+    },
+    {
+      "page": "/dashboards/marketing",
+      "regex": "^/dashboards/marketing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/marketing(?:/)?$"
+    },
+    {
+      "page": "/dashboards/project",
+      "regex": "^/dashboards/project(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/project(?:/)?$"
+    },
+    {
+      "page": "/dashboards/schedule",
+      "regex": "^/dashboards/schedule(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/schedule(?:/)?$"
+    },
+    {
+      "page": "/dashboards/students",
+      "regex": "^/dashboards/students(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/students(?:/)?$"
+    },
+    {
+      "page": "/dashboards/tour-leaders",
+      "regex": "^/dashboards/tour\\-leaders(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/tour\\-leaders(?:/)?$"
+    },
+    {
+      "page": "/dashboards/travel",
+      "regex": "^/dashboards/travel(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/travel(?:/)?$"
+    },
+    {
+      "page": "/dashboards/worksheet",
+      "regex": "^/dashboards/worksheet(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboards/worksheet(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/forgot-password",
+      "regex": "^/forgot\\-password(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/forgot\\-password(?:/)?$"
+    },
+    {
+      "page": "/guide/changelog",
+      "regex": "^/guide/changelog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/changelog(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/api-integration",
+      "regex": "^/guide/documentation/api\\-integration(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/api\\-integration(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/app",
+      "regex": "^/guide/documentation/app(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/app(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/authentication",
+      "regex": "^/guide/documentation/authentication(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/authentication(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/build-production",
+      "regex": "^/guide/documentation/build\\-production(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/build\\-production(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/create-new-page",
+      "regex": "^/guide/documentation/create\\-new\\-page(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/create\\-new\\-page(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/credit",
+      "regex": "^/guide/documentation/credit(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/credit(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/css",
+      "regex": "^/guide/documentation/css(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/css(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/dark-light-mode",
+      "regex": "^/guide/documentation/dark\\-light\\-mode(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/dark\\-light\\-mode(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/development-server",
+      "regex": "^/guide/documentation/development\\-server(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/development\\-server(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/direction",
+      "regex": "^/guide/documentation/direction(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/direction(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/environment-variables",
+      "regex": "^/guide/documentation/environment\\-variables(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/environment\\-variables(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/folder-structure",
+      "regex": "^/guide/documentation/folder\\-structure(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/folder\\-structure(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/installation",
+      "regex": "^/guide/documentation/installation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/installation(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/internationalization",
+      "regex": "^/guide/documentation/internationalization(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/internationalization(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/introduction",
+      "regex": "^/guide/documentation/introduction(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/introduction(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/layouts",
+      "regex": "^/guide/documentation/layouts(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/layouts(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/navigation-config",
+      "regex": "^/guide/documentation/navigation\\-config(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/navigation\\-config(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/overall-theme-config",
+      "regex": "^/guide/documentation/overall\\-theme\\-config(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/overall\\-theme\\-config(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/routing",
+      "regex": "^/guide/documentation/routing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/routing(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/starter",
+      "regex": "^/guide/documentation/starter(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/starter(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/state-management",
+      "regex": "^/guide/documentation/state\\-management(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/state\\-management(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/tailwindcss",
+      "regex": "^/guide/documentation/tailwindcss(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/tailwindcss(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/theming",
+      "regex": "^/guide/documentation/theming(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/theming(?:/)?$"
+    },
+    {
+      "page": "/guide/documentation/updating",
+      "regex": "^/guide/documentation/updating(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/documentation/updating(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/abbreviate-number",
+      "regex": "^/guide/shared\\-component\\-doc/abbreviate\\-number(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/abbreviate\\-number(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/action-link",
+      "regex": "^/guide/shared\\-component\\-doc/action\\-link(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/action\\-link(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/adaptive-card",
+      "regex": "^/guide/shared\\-component\\-doc/adaptive\\-card(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/adaptive\\-card(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/affix",
+      "regex": "^/guide/shared\\-component\\-doc/affix(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/affix(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/authority-check",
+      "regex": "^/guide/shared\\-component\\-doc/authority\\-check(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/authority\\-check(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/calendar-view",
+      "regex": "^/guide/shared\\-component\\-doc/calendar\\-view(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/calendar\\-view(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/chart",
+      "regex": "^/guide/shared\\-component\\-doc/chart(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/chart(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/confirm-dialog",
+      "regex": "^/guide/shared\\-component\\-doc/confirm\\-dialog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/confirm\\-dialog(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/container",
+      "regex": "^/guide/shared\\-component\\-doc/container(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/container(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/custom-format-input",
+      "regex": "^/guide/shared\\-component\\-doc/custom\\-format\\-input(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/custom\\-format\\-input(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/data-table",
+      "regex": "^/guide/shared\\-component\\-doc/data\\-table(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/data\\-table(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/debounce-input",
+      "regex": "^/guide/shared\\-component\\-doc/debounce\\-input(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/debounce\\-input(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/double-sided-image",
+      "regex": "^/guide/shared\\-component\\-doc/double\\-sided\\-image(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/double\\-sided\\-image(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/ellipsis-button",
+      "regex": "^/guide/shared\\-component\\-doc/ellipsis\\-button(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/ellipsis\\-button(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/gantt-chart",
+      "regex": "^/guide/shared\\-component\\-doc/gantt\\-chart(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/gantt\\-chart(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/grow-shrink-value",
+      "regex": "^/guide/shared\\-component\\-doc/grow\\-shrink\\-value(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/grow\\-shrink\\-value(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/icon-text",
+      "regex": "^/guide/shared\\-component\\-doc/icon\\-text(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/icon\\-text(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/image-gallery",
+      "regex": "^/guide/shared\\-component\\-doc/image\\-gallery(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/image\\-gallery(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/loading",
+      "regex": "^/guide/shared\\-component\\-doc/loading(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/loading(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/masonry",
+      "regex": "^/guide/shared\\-component\\-doc/masonry(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/masonry(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/media-skeleton",
+      "regex": "^/guide/shared\\-component\\-doc/media\\-skeleton(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/media\\-skeleton(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/nav-toggle",
+      "regex": "^/guide/shared\\-component\\-doc/nav\\-toggle(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/nav\\-toggle(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/numeric-input",
+      "regex": "^/guide/shared\\-component\\-doc/numeric\\-input(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/numeric\\-input(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/otp-input",
+      "regex": "^/guide/shared\\-component\\-doc/otp\\-input(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/otp\\-input(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/password-input",
+      "regex": "^/guide/shared\\-component\\-doc/password\\-input(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/password\\-input(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/pattern-input",
+      "regex": "^/guide/shared\\-component\\-doc/pattern\\-input(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/pattern\\-input(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/preset-segment-item-option",
+      "regex": "^/guide/shared\\-component\\-doc/preset\\-segment\\-item\\-option(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/preset\\-segment\\-item\\-option(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/region-map",
+      "regex": "^/guide/shared\\-component\\-doc/region\\-map(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/region\\-map(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/rich-text-editor",
+      "regex": "^/guide/shared\\-component\\-doc/rich\\-text\\-editor(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/rich\\-text\\-editor(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/sticky-footer",
+      "regex": "^/guide/shared\\-component\\-doc/sticky\\-footer(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/sticky\\-footer(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/syntax-highlighter",
+      "regex": "^/guide/shared\\-component\\-doc/syntax\\-highlighter(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/syntax\\-highlighter(?:/)?$"
+    },
+    {
+      "page": "/guide/shared-component-doc/users-avatar-group",
+      "regex": "^/guide/shared\\-component\\-doc/users\\-avatar\\-group(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/shared\\-component\\-doc/users\\-avatar\\-group(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/acronym",
+      "regex": "^/guide/utils\\-doc/acronym(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/acronym(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/classNames",
+      "regex": "^/guide/utils\\-doc/classNames(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/classNames(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/file-size-unit",
+      "regex": "^/guide/utils\\-doc/file\\-size\\-unit(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/file\\-size\\-unit(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/is-browser",
+      "regex": "^/guide/utils\\-doc/is\\-browser(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/is\\-browser(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/is-last-child",
+      "regex": "^/guide/utils\\-doc/is\\-last\\-child(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/is\\-last\\-child(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/paginate",
+      "regex": "^/guide/utils\\-doc/paginate(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/paginate(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/reoder-array",
+      "regex": "^/guide/utils\\-doc/reoder\\-array(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/reoder\\-array(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/reorder-dragable",
+      "regex": "^/guide/utils\\-doc/reorder\\-dragable(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/reorder\\-dragable(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/sleep",
+      "regex": "^/guide/utils\\-doc/sleep(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/sleep(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/sort-by",
+      "regex": "^/guide/utils\\-doc/sort\\-by(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/sort\\-by(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-append-query-params",
+      "regex": "^/guide/utils\\-doc/use\\-append\\-query\\-params(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-append\\-query\\-params(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-authority",
+      "regex": "^/guide/utils\\-doc/use\\-authority(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-authority(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-current-session",
+      "regex": "^/guide/utils\\-doc/use\\-current\\-session(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-current\\-session(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-debounce",
+      "regex": "^/guide/utils\\-doc/use\\-debounce(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-debounce(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-infinite-scroll",
+      "regex": "^/guide/utils\\-doc/use\\-infinite\\-scroll(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-infinite\\-scroll(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-interval",
+      "regex": "^/guide/utils\\-doc/use\\-interval(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-interval(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-layout",
+      "regex": "^/guide/utils\\-doc/use\\-layout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-layout(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-menu-active",
+      "regex": "^/guide/utils\\-doc/use\\-menu\\-active(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-menu\\-active(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-navigation",
+      "regex": "^/guide/utils\\-doc/use\\-navigation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-navigation(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-random-bg-color",
+      "regex": "^/guide/utils\\-doc/use\\-random\\-bg\\-color(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-random\\-bg\\-color(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-responsive",
+      "regex": "^/guide/utils\\-doc/use\\-responsive(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-responsive(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-scroll-top",
+      "regex": "^/guide/utils\\-doc/use\\-scroll\\-top(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-scroll\\-top(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-theme",
+      "regex": "^/guide/utils\\-doc/use\\-theme(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-theme(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-time-out-message",
+      "regex": "^/guide/utils\\-doc/use\\-time\\-out\\-message(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-time\\-out\\-message(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/use-translation",
+      "regex": "^/guide/utils\\-doc/use\\-translation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/use\\-translation(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/wild-card-search",
+      "regex": "^/guide/utils\\-doc/wild\\-card\\-search(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/wild\\-card\\-search(?:/)?$"
+    },
+    {
+      "page": "/guide/utils-doc/with-header-item",
+      "regex": "^/guide/utils\\-doc/with\\-header\\-item(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide/utils\\-doc/with\\-header\\-item(?:/)?$"
+    },
+    {
+      "page": "/landing",
+      "regex": "^/landing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing(?:/)?$"
+    },
+    {
+      "page": "/reset-password",
+      "regex": "^/reset\\-password(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reset\\-password(?:/)?$"
+    },
+    {
+      "page": "/sign-in",
+      "regex": "^/sign\\-in(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sign\\-in(?:/)?$"
+    },
+    {
+      "page": "/sign-up",
+      "regex": "^/sign\\-up(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sign\\-up(?:/)?$"
+    },
+    {
+      "page": "/test-api",
+      "regex": "^/test\\-api(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/test\\-api(?:/)?$"
+    },
+    {
+      "page": "/ui-components/alert",
+      "regex": "^/ui\\-components/alert(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/alert(?:/)?$"
+    },
+    {
+      "page": "/ui-components/avatar",
+      "regex": "^/ui\\-components/avatar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/avatar(?:/)?$"
+    },
+    {
+      "page": "/ui-components/badge",
+      "regex": "^/ui\\-components/badge(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/badge(?:/)?$"
+    },
+    {
+      "page": "/ui-components/button",
+      "regex": "^/ui\\-components/button(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/button(?:/)?$"
+    },
+    {
+      "page": "/ui-components/calendar",
+      "regex": "^/ui\\-components/calendar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/calendar(?:/)?$"
+    },
+    {
+      "page": "/ui-components/cards",
+      "regex": "^/ui\\-components/cards(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/cards(?:/)?$"
+    },
+    {
+      "page": "/ui-components/charts",
+      "regex": "^/ui\\-components/charts(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/charts(?:/)?$"
+    },
+    {
+      "page": "/ui-components/checkbox",
+      "regex": "^/ui\\-components/checkbox(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/checkbox(?:/)?$"
+    },
+    {
+      "page": "/ui-components/date-picker",
+      "regex": "^/ui\\-components/date\\-picker(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/date\\-picker(?:/)?$"
+    },
+    {
+      "page": "/ui-components/dialog",
+      "regex": "^/ui\\-components/dialog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/dialog(?:/)?$"
+    },
+    {
+      "page": "/ui-components/drawer",
+      "regex": "^/ui\\-components/drawer(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/drawer(?:/)?$"
+    },
+    {
+      "page": "/ui-components/dropdown",
+      "regex": "^/ui\\-components/dropdown(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/dropdown(?:/)?$"
+    },
+    {
+      "page": "/ui-components/form-control",
+      "regex": "^/ui\\-components/form\\-control(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/form\\-control(?:/)?$"
+    },
+    {
+      "page": "/ui-components/grid",
+      "regex": "^/ui\\-components/grid(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/grid(?:/)?$"
+    },
+    {
+      "page": "/ui-components/icons",
+      "regex": "^/ui\\-components/icons(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/icons(?:/)?$"
+    },
+    {
+      "page": "/ui-components/input",
+      "regex": "^/ui\\-components/input(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/input(?:/)?$"
+    },
+    {
+      "page": "/ui-components/input-group",
+      "regex": "^/ui\\-components/input\\-group(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/input\\-group(?:/)?$"
+    },
+    {
+      "page": "/ui-components/maps",
+      "regex": "^/ui\\-components/maps(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/maps(?:/)?$"
+    },
+    {
+      "page": "/ui-components/menu",
+      "regex": "^/ui\\-components/menu(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/menu(?:/)?$"
+    },
+    {
+      "page": "/ui-components/pagination",
+      "regex": "^/ui\\-components/pagination(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/pagination(?:/)?$"
+    },
+    {
+      "page": "/ui-components/progress",
+      "regex": "^/ui\\-components/progress(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/progress(?:/)?$"
+    },
+    {
+      "page": "/ui-components/radio",
+      "regex": "^/ui\\-components/radio(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/radio(?:/)?$"
+    },
+    {
+      "page": "/ui-components/segment",
+      "regex": "^/ui\\-components/segment(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/segment(?:/)?$"
+    },
+    {
+      "page": "/ui-components/select",
+      "regex": "^/ui\\-components/select(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/select(?:/)?$"
+    },
+    {
+      "page": "/ui-components/skeleton",
+      "regex": "^/ui\\-components/skeleton(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/skeleton(?:/)?$"
+    },
+    {
+      "page": "/ui-components/slider",
+      "regex": "^/ui\\-components/slider(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/slider(?:/)?$"
+    },
+    {
+      "page": "/ui-components/spinner",
+      "regex": "^/ui\\-components/spinner(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/spinner(?:/)?$"
+    },
+    {
+      "page": "/ui-components/steps",
+      "regex": "^/ui\\-components/steps(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/steps(?:/)?$"
+    },
+    {
+      "page": "/ui-components/switcher",
+      "regex": "^/ui\\-components/switcher(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/switcher(?:/)?$"
+    },
+    {
+      "page": "/ui-components/table",
+      "regex": "^/ui\\-components/table(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/table(?:/)?$"
+    },
+    {
+      "page": "/ui-components/tabs",
+      "regex": "^/ui\\-components/tabs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/tabs(?:/)?$"
+    },
+    {
+      "page": "/ui-components/tag",
+      "regex": "^/ui\\-components/tag(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/tag(?:/)?$"
+    },
+    {
+      "page": "/ui-components/time-input",
+      "regex": "^/ui\\-components/time\\-input(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/time\\-input(?:/)?$"
+    },
+    {
+      "page": "/ui-components/timeline",
+      "regex": "^/ui\\-components/timeline(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/timeline(?:/)?$"
+    },
+    {
+      "page": "/ui-components/toast",
+      "regex": "^/ui\\-components/toast(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/toast(?:/)?$"
+    },
+    {
+      "page": "/ui-components/tooltip",
+      "regex": "^/ui\\-components/tooltip(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/tooltip(?:/)?$"
+    },
+    {
+      "page": "/ui-components/typography",
+      "regex": "^/ui\\-components/typography(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/typography(?:/)?$"
+    },
+    {
+      "page": "/ui-components/upload",
+      "regex": "^/ui\\-components/upload(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ui\\-components/upload(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "Next-Router-Segment-Prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  },
+  "rewrites": [
+    {
+      "source": "/admin/api/((?!buses).*)",
+      "destination": "http://72.60.78.22/$1",
+      "regex": "^/admin/api(?:/((?!buses).*))(?:/)?$"
+    }
+  ]
+}

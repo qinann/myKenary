@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Student {
+  id              String   @id
+  name            String
+  email           String   @unique
+  phone           String
+  school          String
+  grade           String
+  address         String
+  emergencyContact String
+  status          String   @default("active")
+  joinDate        DateTime @default(now())
+  assignedBus     String?
+  assignedHotel   String?
+  medicalHistory  String?
+  avatar          String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  seatAssignments SeatAssignment[]
+
+  @@map("students")
+}
+
+model TourLeader {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  whatsapp  String
+  email     String?
+  bus       String?
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tour_leaders")
+}
+
+model Driver {
+  id            String   @id @default(cuid())
+  name          String
+  phone         String
+  whatsapp      String
+  email         String?
+  licenseNumber String?
+  bus           String?
+  status        String   @default("active")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("drivers")
+}
+
+model Bus {
+  id              String   @id
+  name            String
+  plateNumber     String?  @unique
+  capacity        Int      @default(52)
+  occupancy       Int      @default(0)
+  currentLocation String?
+  status          String   @default("available") // available, maintenance, on_route, out_of_service
+  driver          String?
+  tourLeader      String?
+  route           String?
+  fuelLevel       Int?     @default(100)
+  lastMaintenance DateTime?
+  nextMaintenance DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  seatAssignments SeatAssignment[]
+
+  @@map("buses")
+}
+
+model SeatAssignment {
+  id        String   @id @default(cuid())
+  busId     String
+  seatNumber Int
+  studentId String
+  assignedAt DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  bus     Bus     @relation(fields: [busId], references: [id], onDelete: Cascade)
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  // Ensure one student per seat per bus
+  @@unique([busId, seatNumber])
+  @@unique([busId, studentId])
+  @@map("seat_assignments")
+}

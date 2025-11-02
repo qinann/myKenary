@@ -1,0 +1,4 @@
+id,name,email,phone,school,grade,address,emergencyContact,assignedBus,assignedHotel
+STD002,John Doe,john.doe@example.com,+6281234567890,SMA Negeri 1,XII IPA 1,Jakarta Selatan,+6281234567891,BUS001,HTL001
+STD003,Jane Smith,jane.smith@example.com,+6281234567892,SMA Negeri 2,XII IPS 1,Jakarta Utara,+6281234567893,BUS002,HTL002
+STD004,Bob Johnson,bob.johnson@example.com,+6281234567894,SMA Negeri 3,XII IPA 2,Jakarta Barat,+6281234567895,BUS001,HTL001

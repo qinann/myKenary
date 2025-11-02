@@ -1,0 +1,1 @@
+"use strict";exports.id=448,exports.ids=[448],exports.modules={10448:(e,r,s)=>{s.r(r),s.d(r,{default:()=>l});var t=s(60687),d=s(16189);let l=()=>{let e=(0,d.usePathname)();return(0,t.jsxs)("h3",{children:["Order: ",e.split("/").pop()]})}}};

@@ -1,0 +1,29 @@
+<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="36" cy="36" r="36" fill="#2D5A27"/>
+  
+  <!-- Main Leaf Shape -->
+  <path d="M36 11.25C45 11.25 53.25 16.875 59.25 25.125C61.875 29.25 63 33.75 63 37.875C63 49.125 56.25 58.875 45 63.375C42 64.875 39 65.625 36 65.625C28.125 65.625 21 61.875 16.875 56.25C12.75 50.625 11.25 43.5 12.75 36.375C14.25 28.125 19.5 19.875 28.125 14.25C30.75 12.75 33.75 12 36 11.25Z" fill="#4ADE80"/>
+  
+  <!-- Leaf Vein -->
+  <path d="M36 11.25C36 16.875 36 22.5 36 28.125C36 33.75 36 39.375 36 45C36 50.625 36 56.25 36 61.875" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Secondary Veins -->
+  <path d="M36 21C39.75 19.5 42.75 20.25 45 22.5" stroke="#22C55E" stroke-width="0.75" stroke-linecap="round"/>
+  <path d="M36 28.125C40.5 26.625 45 28.125 47.25 30.75" stroke="#22C55E" stroke-width="0.75" stroke-linecap="round"/>
+  <path d="M36 35.25C42 33.75 47.25 35.25 51.75 39.375" stroke="#22C55E" stroke-width="0.75" stroke-linecap="round"/>
+  <path d="M36 45C40.5 43.5 45 45 48 49.5" stroke="#22C55E" stroke-width="0.75" stroke-linecap="round"/>
+  
+  <!-- Left side veins -->
+  <path d="M36 21C32.25 19.5 29.25 20.25 27 22.5" stroke="#22C55E" stroke-width="0.75" stroke-linecap="round"/>
+  <path d="M36 28.125C31.5 26.625 27 28.125 24.75 30.75" stroke="#22C55E" stroke-width="0.75" stroke-linecap="round"/>
+  <path d="M36 35.25C30 33.75 24.75 35.25 20.25 39.375" stroke="#22C55E" stroke-width="0.75" stroke-linecap="round"/>
+  <path d="M36 45C31.5 43.5 27 45 24 49.5" stroke="#22C55E" stroke-width="0.75" stroke-linecap="round"/>
+  
+  <!-- Highlight -->
+  <ellipse cx="28.125" cy="25.125" rx="4.5" ry="3" fill="#86EFAC" opacity="0.6"/>
+  
+  <!-- Small decorative elements -->
+  <circle cx="27" cy="18" r="1.2" fill="#86EFAC" opacity="0.8"/>
+  <circle cx="48" cy="21" r="0.9" fill="#86EFAC" opacity="0.8"/>
+</svg>

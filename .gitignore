@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+*.log
+*.zip
+*.tar.gz
+.env
+.env.*
+coverage/
+tmp/
+
+# Ignore local archives in root
+travel-backend-deploy.tar.gz
+travel-web/deploy-travel-web.zip
+

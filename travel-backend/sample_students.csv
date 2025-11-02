@@ -1,0 +1,4 @@
+id,name,email,phone,school,grade,address,emergencyContact,status,joinDate,assignedBus,assignedHotel,medicalHistory,avatar
+STD006,Test Student 1,test1@example.com,081234567890,SMA Test 1,12,Jl. Test 1,081234567891,active,2024-01-15,Bus A,Hotel A,None,
+STD007,Test Student 2,test2@example.com,081234567892,SMA Test 2,11,Jl. Test 2,081234567893,active,2024-01-16,Bus B,Hotel B,None,
+STD008,Test Student 3,test3@example.com,081234567894,SMA Test 3,10,Jl. Test 3,081234567895,active,2024-01-17,Bus C,Hotel C,None,

@@ -1,0 +1,128 @@
+import { DASHBOARDS_PREFIX_PATH } from '@/constants/route.constant'
+import {
+    NAV_ITEM_TYPE_TITLE,
+    NAV_ITEM_TYPE_ITEM,
+} from '@/constants/navigation.constant'
+import { ADMIN, USER } from '@/constants/roles.constant'
+import type { NavigationTree } from '@/@types/navigation'
+
+const dashboardsNavigationConfig: NavigationTree[] = [
+    {
+        key: 'dashboard',
+        path: '',
+        title: 'Dashboard',
+        translateKey: 'nav.dashboard.dashboard',
+        icon: 'dashboard',
+        type: NAV_ITEM_TYPE_TITLE,
+        authority: [ADMIN, USER],
+        meta: {
+            horizontalMenu: {
+                layout: 'default',
+            },
+        },
+        subMenu: [
+            {
+                key: 'dashboard.overview',
+                path: `${DASHBOARDS_PREFIX_PATH}/travel`,
+                title: 'Dashboard',
+                translateKey: 'nav.dashboard.overview',
+                icon: 'dashboard',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN, USER],
+                subMenu: [],
+            },
+            {
+                key: 'dashboard.busInfo',
+                path: `${DASHBOARDS_PREFIX_PATH}/bus-info`,
+                title: 'Bus Info',
+                translateKey: 'nav.dashboard.busInfo',
+                icon: 'busInfo',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN, USER],
+                subMenu: [],
+            },
+            {
+                key: 'dashboard.hotel',
+                path: `${DASHBOARDS_PREFIX_PATH}/hotel`,
+                title: 'Hotel',
+                translateKey: 'nav.dashboard.hotel',
+                icon: 'hotel',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN, USER],
+                subMenu: [],
+            },
+            {
+                key: 'dashboard.students',
+                path: `${DASHBOARDS_PREFIX_PATH}/students`,
+                title: 'Students',
+                translateKey: 'nav.dashboard.students',
+                icon: 'students',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN, USER],
+                subMenu: [],
+            },
+            {
+                key: 'dashboard.schedule',
+                path: `${DASHBOARDS_PREFIX_PATH}/schedule`,
+                title: 'Schedule',
+                translateKey: 'nav.dashboard.schedule',
+                icon: 'schedule',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN, USER],
+                subMenu: [],
+            },
+            {
+                key: 'dashboard.liveLocation',
+                path: `${DASHBOARDS_PREFIX_PATH}/live-location`,
+                title: 'Live Location',
+                translateKey: 'nav.dashboard.liveLocation',
+                icon: 'liveLocation',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN, USER],
+                subMenu: [],
+            },
+            {
+                key: 'dashboard.gallery',
+                path: `${DASHBOARDS_PREFIX_PATH}/gallery`,
+                title: 'Gallery',
+                translateKey: 'nav.dashboard.gallery',
+                icon: 'gallery',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN, USER],
+                subMenu: [],
+            },
+            {
+                key: 'dashboard.worksheet',
+                path: `${DASHBOARDS_PREFIX_PATH}/worksheet`,
+                title: 'Worksheet',
+                translateKey: 'nav.dashboard.worksheet',
+                icon: 'worksheet',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN, USER],
+                subMenu: [],
+            },
+            {
+                key: 'dashboard.booklet',
+                path: `${DASHBOARDS_PREFIX_PATH}/booklet`,
+                title: 'Booklet',
+                translateKey: 'nav.dashboard.booklet',
+                icon: 'booklet',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN, USER],
+                subMenu: [],
+            },
+            {
+                key: 'dashboard.contact',
+                path: `${DASHBOARDS_PREFIX_PATH}/contact`,
+                title: 'Contact',
+                translateKey: 'nav.dashboard.contact',
+                icon: 'contact',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN, USER],
+                subMenu: [],
+            },
+        ],
+    },
+]
+
+export default dashboardsNavigationConfig

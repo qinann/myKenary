@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[5462],{35462:(e,s,r)=>{r.r(s),r.d(s,{default:()=>u});var t=r(95155),l=r(35695);let u=()=>{let e=(0,l.usePathname)();return(0,t.jsxs)("h3",{children:["Order: ",e.split("/").pop()]})}}}]);
