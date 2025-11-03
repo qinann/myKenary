@@ -7,7 +7,11 @@ const Page = () => {
     return (
         <>
             <p>
+<<<<<<< HEAD
                 Ecme uses NextAuth.js as the authentication solution, offering a
+=======
+ My Kenary uses NextAuth.js as the authentication solution, offering a
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                 robust and flexible way to handle user authentication, it
                 supports custom authentication flows and provides a wide range
                 of authentication providers, including Google, GitHub, and more.

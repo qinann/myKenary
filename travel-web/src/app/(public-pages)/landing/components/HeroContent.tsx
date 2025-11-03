@@ -73,7 +73,11 @@ const HeroContent = ({ mode }: { mode: Mode }) => {
                                 src="/img/landing/hero/hero.webp"
                                 width={1920}
                                 height={1040}
+<<<<<<< HEAD
                                 alt="Ecme homepage"
+=======
+ alt="My Kenary homepage"
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                             />
                         )}
                         {mode === MODE_DARK && (
@@ -82,7 +86,11 @@ const HeroContent = ({ mode }: { mode: Mode }) => {
                                 src="/img/landing/hero/hero-dark.webp"
                                 width={1920}
                                 height={1040}
+<<<<<<< HEAD
                                 alt="Ecme homepage"
+=======
+ alt="My Kenary homepage"
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                             />
                         )}
                     </div>

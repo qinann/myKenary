@@ -71,9 +71,21 @@ export const useStudents = (page = 1, limit = 10, search?: string) => {
     
     try {
       const response = await apiService.getStudents(page, limit, search);
+<<<<<<< HEAD
       setStudents(response.data);
       setPagination(response.pagination);
     } catch (err) {
+=======
+      if (__DEV__) {
+        console.log('[Students] fetched count:', Array.isArray(response?.data) ? response.data.length : 'n/a', 'pagination:', response?.pagination);
+      }
+      setStudents(response.data);
+      setPagination(response.pagination);
+    } catch (err) {
+      if (__DEV__) {
+        console.log('[Students] fetch error:', err);
+      }
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       setError(err instanceof Error ? err.message : 'Failed to fetch students');
     } finally {
       setLoading(false);

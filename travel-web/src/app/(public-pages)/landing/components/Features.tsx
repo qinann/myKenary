@@ -203,7 +203,11 @@ const Features = ({ mode, onModeChange, schema, setSchema }: FeaturesProps) => {
                     viewport={{ once: true }}
                 >
                     <motion.h2 className="my-6 text-5xl">
+<<<<<<< HEAD
                         Discover the Power of Ecme
+=======
+ Discover the Power of My Kenary
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                     </motion.h2>
                     <motion.p className="mx-auto max-w-[600px]">
                         Crafted for performance, scalability, and ease of
@@ -311,7 +315,11 @@ const Features = ({ mode, onModeChange, schema, setSchema }: FeaturesProps) => {
                                                     src="/img/landing/layouts/documentation.png"
                                                     width={630}
                                                     height={562}
+<<<<<<< HEAD
                                                     alt="Ecme documentaion"
+=======
+ alt="My Kenary documentation"
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                                                 />
                                             )}
                                             {mode === 'dark' && (
@@ -320,7 +328,11 @@ const Features = ({ mode, onModeChange, schema, setSchema }: FeaturesProps) => {
                                                     src="/img/landing/layouts/documentation-dark.png"
                                                     width={630}
                                                     height={562}
+<<<<<<< HEAD
                                                     alt="Ecme documentaion"
+=======
+ alt="My Kenary documentation"
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                                                 />
                                             )}
                                         </div>

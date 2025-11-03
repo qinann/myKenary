@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client'
 
 import { Card } from '@/components/ui/Card'
@@ -437,4 +438,137 @@ export default function BookletPage() {
             </Card>
         </div>
     )
+=======
+"use client"
+
+import { useEffect, useState } from 'react'
+import { Card } from '@/components/ui/Card'
+import { Button } from '@/components/ui/Button'
+import { TbFileTypePdf, TbUpload, TbEye } from 'react-icons/tb'
+
+export default function BookletPage() {
+  const [existingUrl, setExistingUrl] = useState<string | null>(null)
+  const [uploading, setUploading] = useState(false)
+  const [message, setMessage] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
+  const [file, setFile] = useState<File | null>(null)
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
+  const fetchExisting = async () => {
+    try {
+      const resp = await fetch(`${basePath}/api/booklet`)
+      const data = await resp.json()
+      if (data.success) {
+        setExistingUrl(data.url)
+      } else {
+        setExistingUrl(null)
+      }
+    } catch {
+      setExistingUrl(null)
+    }
+  }
+
+  useEffect(() => {
+    fetchExisting()
+  }, [])
+
+  const onUpload = async () => {
+    setMessage(null)
+    setError(null)
+    if (!file) {
+      setError('Silakan pilih file PDF terlebih dahulu.')
+      return
+    }
+    if (file.type !== 'application/pdf') {
+      setError('File harus berformat PDF.')
+      return
+    }
+    try {
+      setUploading(true)
+      const formData = new FormData()
+      formData.append('file', file)
+      const resp = await fetch(`${basePath}/api/booklet`, { method: 'POST', body: formData })
+      const data = await resp.json()
+      if (!resp.ok || !data.success) {
+        throw new Error(data.error || 'Gagal mengunggah PDF')
+      }
+      setExistingUrl(data.url)
+      setMessage('Berhasil mengunggah booklet PDF.')
+    } catch (e: any) {
+      setError(e?.message || 'Terjadi kesalahan saat upload.')
+    } finally {
+      setUploading(false)
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold">Booklet (PDF Tunggal)</h1>
+      </div>
+
+      <Card>
+        <div className="p-6 space-y-4">
+          <p className="text-sm text-gray-600">
+            Halaman ini hanya menampilkan satu file booklet (PDF). Unggah ulang akan menggantikan file sebelumnya.
+          </p>
+
+          {message && (
+            <div className="p-3 rounded bg-green-50 text-green-700 border border-green-200">{message}</div>
+          )}
+          {error && (
+            <div className="p-3 rounded bg-red-50 text-red-700 border border-red-200">{error}</div>
+          )}
+
+          <div className="flex flex-col md:flex-row items-start md:items-end gap-3">
+            <div className="flex-1 w-full">
+              <label className="block text-sm font-medium mb-2">Pilih file PDF</label>
+              <input
+                type="file"
+                accept="application/pdf"
+                onChange={(e) => {
+                  const f = (e.target as HTMLInputElement).files?.[0] || null
+                  setFile(f)
+                }}
+                className="w-full border border-gray-300 rounded-md px-3 py-2"
+              />
+            </div>
+            <Button onClick={onUpload} disabled={uploading}>
+              <TbUpload className="w-4 h-4 mr-2" />
+              {uploading ? 'Mengunggah...' : 'Unggah PDF'}
+            </Button>
+          </div>
+        </div>
+      </Card>
+
+      <Card>
+        <div className="p-6 space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <TbFileTypePdf className="w-5 h-5 text-red-500" />
+              <h2 className="text-lg font-semibold">Preview Booklet</h2>
+            </div>
+            {existingUrl && (
+              <a href={existingUrl} target="_blank" rel="noreferrer" className="inline-flex items-center text-blue-600">
+                <TbEye className="w-4 h-4 mr-1" />
+                Buka di tab baru
+              </a>
+            )}
+          </div>
+
+          {existingUrl ? (
+            <object data={existingUrl} type="application/pdf" width="100%" height="800px">
+              <p>
+                PDF tidak dapat ditampilkan di browser ini. Silakan{' '}
+                <a href={existingUrl} className="text-blue-600">unduh</a> untuk melihat.
+              </p>
+            </object>
+          ) : (
+            <div className="text-center text-gray-500">Belum ada booklet yang diunggah.</div>
+          )}
+        </div>
+      </Card>
+    </div>
+  )
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 }

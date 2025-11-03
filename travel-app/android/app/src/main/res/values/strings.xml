@@ -1,3 +1,7 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">travel-app</string>
+=======
+    <string name="app_name">My Kenary</string>
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 </resources>

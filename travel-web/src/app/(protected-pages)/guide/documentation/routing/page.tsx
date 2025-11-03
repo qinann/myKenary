@@ -6,7 +6,11 @@ const Page = () => {
     return (
         <>
             <p>
+<<<<<<< HEAD
                 Ecme routing follows the Next.js App Router conventions, it uses
+=======
+ My Kenary routing follows the Next.js App Router conventions, it uses
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                 a file-based routing system where each file in the{' '}
                 <code>/app</code> directory corresponds to a route in your
                 application. Subfolders represent nested routes, making it easy
@@ -172,7 +176,11 @@ export const authRoutes = [
             <div className="mt-10" id="authority">
                 <h5>Authority</h5>
                 <p className="mt-1">
+<<<<<<< HEAD
                     Ecme routes support simple role-based access control. You
+=======
+ My Kenary routes support simple role-based access control. You
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                     can specify the roles that have access to a route by using
                     the <code>authority</code> field. For example, the following
                     route is only accessible to users with the{' '}

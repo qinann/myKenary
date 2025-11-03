@@ -176,7 +176,11 @@ const Demos = ({ mode }: DemoProps) => {
                 </motion.h2>
                 <motion.p className="mx-auto max-w-[600px]">
                     Whether you need an admin panel, an interactive dashboard,
+<<<<<<< HEAD
                     or a full-featured application, Ecme is the ultimate
+=======
+ or a full-featured application, My Kenary is the ultimate
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                     solution
                 </motion.p>
             </motion.div>

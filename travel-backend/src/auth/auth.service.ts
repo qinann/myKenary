@@ -99,4 +99,8 @@ export class AuthService {
   async onModuleDestroy() {
     await this.pool.end();
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)

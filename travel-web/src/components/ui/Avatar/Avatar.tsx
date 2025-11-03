@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from 'react'
 import useMergedRef from '../hooks/useMergeRef'
 import classNames from 'classnames'
 import type { CommonProps, TypeAttributes } from '../@types/common'
+<<<<<<< HEAD
+=======
+import withBasePath from '@/utils/withBasePath'
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 import type { ReactNode, Ref } from 'react'
 
 export interface AvatarProps extends CommonProps {
@@ -75,10 +79,18 @@ const Avatar = (props: AvatarProps) => {
     )
 
     if (src) {
+<<<<<<< HEAD
         children = (
             <img
                 className={`avatar-img avatar-${shape}`}
                 src={src}
+=======
+        const resolvedSrc = src.startsWith('/') ? (withBasePath(src) as string) : src
+        children = (
+            <img
+                className={`avatar-img avatar-${shape}`}
+                src={resolvedSrc}
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                 srcSet={srcSet}
                 alt={alt}
                 loading="lazy"

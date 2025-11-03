@@ -19,10 +19,23 @@ export default auth((req) => {
     const { nextUrl } = req
     const isSignedIn = !!req.auth
 
+<<<<<<< HEAD
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix)
     const isApiRoute = nextUrl.pathname.startsWith(appConfig.apiPrefix) || nextUrl.pathname.startsWith('/api')
     const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
     const isAuthRoute = authRoutes.includes(nextUrl.pathname)
+=======
+    // Respect basePath (e.g. '/admin') when matching routes
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+    const pathname = nextUrl.pathname.startsWith(basePath)
+        ? nextUrl.pathname.slice(basePath.length) || '/'
+        : nextUrl.pathname
+
+    const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix)
+    const isApiRoute = nextUrl.pathname.startsWith('/api')
+    const isPublicRoute = publicRoutes.includes(pathname)
+    const isAuthRoute = authRoutes.includes(pathname)
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
     /** Skip auth middleware for all api routes */
     if (isApiRoute) return
@@ -30,9 +43,13 @@ export default auth((req) => {
     if (isAuthRoute) {
         if (isSignedIn) {
             /** Redirect to authenticated entry path if signed in & path is auth route */
+<<<<<<< HEAD
             return Response.redirect(
                 new URL(appConfig.authenticatedEntryPath, nextUrl),
             )
+=======
+            return Response.redirect(new URL(`${basePath}${appConfig.authenticatedEntryPath}`, nextUrl))
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
         }
         return
     }
@@ -46,7 +63,11 @@ export default auth((req) => {
 
         return Response.redirect(
             new URL(
+<<<<<<< HEAD
                 `${appConfig.unAuthenticatedEntryPath}?${REDIRECT_URL_KEY}=${callbackUrl}`,
+=======
+                `${basePath}${appConfig.unAuthenticatedEntryPath}?${REDIRECT_URL_KEY}=${callbackUrl}`,
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                 nextUrl,
             ),
         )

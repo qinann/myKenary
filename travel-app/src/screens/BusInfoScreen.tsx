@@ -227,6 +227,7 @@ const BusInfoScreen = ({navigation}: any) => {
     );
   };
 
+<<<<<<< HEAD
   const handleQRScanSuccess = async (studentData: StudentData) => {
     if (!selectedBus || !selectedSeatNumber) return;
 
@@ -239,10 +240,20 @@ const BusInfoScreen = ({navigation}: any) => {
       );
       return;
     }
+=======
+  const handleQRScanSuccess = async (studentData: StudentData, scannedSeatNumber: number) => {
+    // Logging terstruktur untuk debug alur scan
+    console.log('[BusInfo] handleQRScanSuccess', { scannedSeatNumber, studentData });
+    if (!selectedBus || !scannedSeatNumber) return;
+
+    // Remove the local seat check - let the backend handle conflicts
+    // This ensures we always use the most up-to-date data from the server
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
     try {
       // Create seat assignment using the student ID from QR code
       // Include student data for auto-creation if student doesn't exist
+<<<<<<< HEAD
       await apiService.createSeatAssignment(
         selectedBus.id, 
         selectedSeatNumber, 
@@ -251,6 +262,21 @@ const BusInfoScreen = ({navigation}: any) => {
           name: studentData.nama,
           grade: studentData.kelas,
           school: studentData.sekolah
+=======
+      // Pastikan payload bersih dari spasi/karakter tak terlihat
+      const cleanName = (studentData.nama || '').toString().trim();
+      const cleanGrade = (studentData.kelas || '').toString().trim();
+      const cleanSchool = (studentData.sekolah || '').toString().trim();
+
+      await apiService.createSeatAssignment(
+        selectedBus.id, 
+        scannedSeatNumber, 
+        studentData.id,
+        {
+          name: cleanName,
+          grade: cleanGrade,
+          school: cleanSchool
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
         }
       );
       
@@ -260,10 +286,18 @@ const BusInfoScreen = ({navigation}: any) => {
 
       Alert.alert(
         'Berhasil!',
+<<<<<<< HEAD
         `Siswa ${studentData.nama} (${studentData.kelas}) berhasil didaftarkan ke bangku nomor ${selectedSeatNumber}.`,
         [{text: 'OK'}]
       );
 
+=======
+        `Siswa ${cleanName} (${cleanGrade}) berhasil didaftarkan ke bangku nomor ${scannedSeatNumber}.`,
+        [{text: 'OK'}]
+      );
+      // Tutup scanner dan reset kursi terpilih
+      setQrScannerVisible(false);
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       setSelectedSeatNumber(null);
     } catch (error) {
       console.error('Error creating seat assignment:', error);
@@ -274,13 +308,21 @@ const BusInfoScreen = ({navigation}: any) => {
         try {
           // Ambil penugasan kursi terbaru untuk memberikan pesan yang lebih informatif
           const latestAssignments = await apiService.getSeatAssignments(selectedBus.id);
+<<<<<<< HEAD
           const occupiedSeat = latestAssignments.find(a => a.seatNumber === selectedSeatNumber);
+=======
+          const occupiedSeat = latestAssignments.find(a => a.seatNumber === scannedSeatNumber);
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
           const currentSeatForStudent = latestAssignments.find(a => a.student.id === studentData.id);
 
           if (occupiedSeat) {
             Alert.alert(
               'Bangku Sudah Terisi',
+<<<<<<< HEAD
               `Bangku nomor ${selectedSeatNumber} sudah ditempati oleh ${occupiedSeat.student.name} (${occupiedSeat.student.grade}). Pilih bangku lain atau hapus siswa dari bangku tersebut terlebih dahulu.`,
+=======
+              `Bangku nomor ${scannedSeatNumber} sudah ditempati oleh ${occupiedSeat.student.name} (${occupiedSeat.student.grade}). Pilih bangku lain atau hapus siswa dari bangku tersebut terlebih dahulu.`,
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
               [{ text: 'OK' }]
             );
             return;
@@ -289,7 +331,11 @@ const BusInfoScreen = ({navigation}: any) => {
           if (currentSeatForStudent) {
             Alert.alert(
               'Siswa Sudah Terdaftar',
+<<<<<<< HEAD
               `Siswa ${currentSeatForStudent.student.name} sudah memiliki bangku nomor ${currentSeatForStudent.seatNumber} di bus ini.\n\nApakah ingin memindahkan ke bangku nomor ${selectedSeatNumber}?`,
+=======
+              `Siswa ${currentSeatForStudent.student.name} sudah memiliki bangku nomor ${currentSeatForStudent.seatNumber} di bus ini.\n\nApakah ingin memindahkan ke bangku nomor ${scannedSeatNumber}?`,
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
               [
                 { text: 'Batal', style: 'cancel' },
                 {
@@ -298,24 +344,40 @@ const BusInfoScreen = ({navigation}: any) => {
                     try {
                       // Pastikan bangku tujuan masih kosong sebelum memindahkan
                       const latestAgain = await apiService.getSeatAssignments(selectedBus.id);
+<<<<<<< HEAD
                       const stillEmpty = !latestAgain.find(a => a.seatNumber === selectedSeatNumber);
                       if (!stillEmpty) {
                         Alert.alert('Bangku Terisi', `Bangku ${selectedSeatNumber} tidak lagi kosong. Silakan pilih bangku lain.`);
+=======
+                      const stillEmpty = !latestAgain.find(a => a.seatNumber === scannedSeatNumber);
+                      if (!stillEmpty) {
+                        Alert.alert('Bangku Terisi', `Bangku ${scannedSeatNumber} tidak lagi kosong. Silakan pilih bangku lain.`);
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                         return;
                       }
 
                       await apiService.deleteSeatAssignment(selectedBus.id, currentSeatForStudent.seatNumber);
+<<<<<<< HEAD
                       await apiService.createSeatAssignment(
                         selectedBus.id,
                         selectedSeatNumber,
                         studentData.id
                       );
+=======
+                      await apiService.createSeatAssignment(selectedBus.id, scannedSeatNumber, studentData.id);
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
                       const refreshedBus = await loadBusWithSeatAssignments(selectedBus);
                       setSelectedBus(refreshedBus);
                       setSelectedSeatNumber(null);
+<<<<<<< HEAD
 
                       Alert.alert('Berhasil!', `Siswa dipindahkan ke bangku nomor ${selectedSeatNumber}.`);
+=======
+                      setQrScannerVisible(false);
+
+                      Alert.alert('Berhasil!', `Siswa dipindahkan ke bangku nomor ${scannedSeatNumber}.`);
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                     } catch (moveErr) {
                       console.error('Failed to relocate student:', moveErr);
                       Alert.alert('Error', 'Gagal memindahkan siswa. Coba lagi atau hubungi administrator.');

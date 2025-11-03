@@ -8,7 +8,11 @@ const Page = () => {
     return (
         <>
             <p>
+<<<<<<< HEAD
                 Ecme provide 6 types of post login layouts & 3 types of auth
+=======
+ My Kenary provides 6 types of post login layouts & 3 types of auth
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                 layouts, all layouts component can be found under directory{' '}
                 <code>src/components/layouts/PostLoginLayout/components*</code>
                 and all the components used within layouts can be found under{' '}

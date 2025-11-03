@@ -16,6 +16,13 @@
 # production
 /build
 
+<<<<<<< HEAD
+=======
+# deployment artifacts
+/deploy-travel-web/standalone/
+/deploy-travel-web/static/
+
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 # misc
 .DS_Store
 *.pem
@@ -27,6 +34,10 @@ yarn-error.log*
 
 # env files
 .env
+<<<<<<< HEAD
+=======
+.env.*
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
 # vercel
 .vercel

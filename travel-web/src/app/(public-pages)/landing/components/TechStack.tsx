@@ -69,7 +69,11 @@ const TechStack = () => {
                     Core Technologies Powering
                 </motion.h2>
                 <motion.p className="mx-auto max-w-[600px]">
+<<<<<<< HEAD
                     Ecme built using cutting-edge technologies to ensure
+=======
+ My Kenary built using cutting-edge technologies to ensure
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                     streamlined, scalability, and a seamless developer
                     experience.
                 </motion.p>

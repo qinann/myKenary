@@ -24,7 +24,11 @@ interface StudentData {
 interface QRCodeScannerProps {
   visible: boolean;
   onClose: () => void;
+<<<<<<< HEAD
   onScanSuccess: (studentData: StudentData) => void;
+=======
+  onScanSuccess: (studentData: StudentData, seatNumber: number) => void;
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
   seatNumber: number;
 }
 
@@ -91,11 +95,16 @@ const QRCodeScannerComponent: React.FC<QRCodeScannerProps> = ({
       event?.nativeEvent?.codeString ||
       event?.codeString ||
       '';
+<<<<<<< HEAD
+=======
+    // Simpan raw terlebih dulu untuk debug
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
     console.log('[QRScanner] Raw QR data:', qrData);
     setLastScanRaw(qrData);
     setErrorText('');
     
     try {
+<<<<<<< HEAD
       const parsed = JSON.parse(qrData);
 
       // Normalisasi kunci: terima bahasa Indonesia (nama, kelas, sekolah) dan Inggris (name, class, school)
@@ -105,6 +114,33 @@ const QRCodeScannerComponent: React.FC<QRCodeScannerProps> = ({
         nama: parsed.nama ?? parsed.name ?? '',
         kelas: parsed.kelas ?? parsed.class ?? parsed.grade ?? '',
         sekolah: parsed.sekolah ?? parsed.school ?? '',
+=======
+      // Sanitasi: buang BOM, trim whitespace, dan coba ekstrak JSON jika ada teks tambahan
+      const raw = String(qrData || '');
+      const sanitized = raw.replace(/^\uFEFF/, '').trim();
+      let parsed: any;
+      try {
+        parsed = JSON.parse(sanitized);
+      } catch (_inner) {
+        // Coba ambil substring antara { ... } jika generator menambahkan teks lain
+        const start = sanitized.indexOf('{');
+        const end = sanitized.lastIndexOf('}');
+        if (start !== -1 && end !== -1 && end > start) {
+          const candidate = sanitized.slice(start, end + 1);
+          parsed = JSON.parse(candidate);
+        } else {
+          throw _inner;
+        }
+      }
+
+      // Normalisasi kunci: terima bahasa Indonesia (nama, kelas, sekolah) dan Inggris (name, class, school)
+      const normalized = {
+        no: (parsed.no?.toString?.() || parsed.seatNumber?.toString?.() || '').trim?.() || '',
+        id: ((parsed.id ?? parsed.ID ?? parsed.studentId ?? '')?.toString?.() || parsed.id || '').trim?.() || '',
+        nama: (parsed.nama ?? parsed.name ?? '')?.toString?.().trim?.() || '',
+        kelas: (parsed.kelas ?? parsed.class ?? parsed.grade ?? '')?.toString?.().trim?.() || '',
+        sekolah: (parsed.sekolah ?? parsed.school ?? '')?.toString?.().trim?.() || '',
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       } as {
         no: string;
         id: string;
@@ -113,12 +149,21 @@ const QRCodeScannerComponent: React.FC<QRCodeScannerProps> = ({
         sekolah: string;
       };
 
+<<<<<<< HEAD
       console.log('[QRScanner] Parsed student:', normalized);
+=======
+      console.log('[QRScanner] Parsed student:', { ...normalized, seatNumber });
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
       if (normalized.id && normalized.nama && normalized.kelas && normalized.sekolah) {
         // Berhasil: hentikan scanning dan tutup modal
         setIsScanning(false);
+<<<<<<< HEAD
         onScanSuccess(normalized);
+=======
+        // Kirim seatNumber agar parent tidak bergantung pada state yang bisa berubah saat modal ditutup
+        onScanSuccess(normalized, seatNumber);
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
         onClose();
       } else {
         // Fallback: coba parsing format teks baris dengan "ID:", "Nama:", "Kelas:", "Sekolah:"
@@ -142,7 +187,11 @@ const QRCodeScannerComponent: React.FC<QRCodeScannerProps> = ({
         if (fallback.id && fallback.nama && fallback.kelas && fallback.sekolah) {
           console.log('[QRScanner] Fallback parsed student:', fallback);
           setIsScanning(false);
+<<<<<<< HEAD
           onScanSuccess(fallback);
+=======
+          onScanSuccess(fallback, seatNumber);
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
           onClose();
           return;
         }
@@ -174,7 +223,11 @@ const QRCodeScannerComponent: React.FC<QRCodeScannerProps> = ({
       if (fallback.id && fallback.nama && fallback.kelas && fallback.sekolah) {
         console.log('[QRScanner] Fallback parsed student:', fallback);
         setIsScanning(false);
+<<<<<<< HEAD
         onScanSuccess(fallback);
+=======
+        onScanSuccess(fallback, seatNumber);
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
         onClose();
       } else {
         setErrorText('QR bukan JSON dan tidak bisa diparse sebagai teks. Gunakan format yang didukung.');

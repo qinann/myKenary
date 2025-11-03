@@ -1,7 +1,13 @@
 import classNames from 'classnames'
 import { APP_NAME } from '@/constants/app.constant'
 import Image from 'next/image'
+<<<<<<< HEAD
 import type { CommonProps } from '@/@types/common'
+=======
+import withBasePath from '@/utils/withBasePath'
+import type { CommonProps } from '@/@types/common'
+import LogoImg from '../../../logo.jpg'
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
 interface LogoProps extends CommonProps {
     type?: 'full' | 'streamline'
@@ -37,7 +43,11 @@ const Logo = (props: LogoProps) => {
                             type === 'full' ? '' : 'hidden',
                             imgClass,
                         )}
+<<<<<<< HEAD
                         src={`${LOGO_SRC_PATH}logo-light-full.png`}
+=======
+                        src={LogoImg}
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                         alt={`${APP_NAME} logo`}
                         width={width}
                         height={height}
@@ -49,7 +59,11 @@ const Logo = (props: LogoProps) => {
                             type === 'streamline' ? '' : 'hidden',
                             imgClass,
                         )}
+<<<<<<< HEAD
                         src={`${LOGO_SRC_PATH}logo-light-streamline.png`}
+=======
+                        src={LogoImg}
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                         alt={`${APP_NAME} logo`}
                         width={width}
                         height={height}
@@ -64,7 +78,11 @@ const Logo = (props: LogoProps) => {
                             type === 'full' ? '' : 'hidden',
                             imgClass,
                         )}
+<<<<<<< HEAD
                         src={`${LOGO_SRC_PATH}logo-dark-full.png`}
+=======
+                        src={LogoImg}
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                         alt={`${APP_NAME} logo`}
                         width={width}
                         height={height}
@@ -75,7 +93,11 @@ const Logo = (props: LogoProps) => {
                             type === 'streamline' ? '' : 'hidden',
                             imgClass,
                         )}
+<<<<<<< HEAD
                         src={`${LOGO_SRC_PATH}logo-dark-streamline.png`}
+=======
+                        src={LogoImg}
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                         alt={`${APP_NAME} logo`}
                         width={width}
                         height={height}

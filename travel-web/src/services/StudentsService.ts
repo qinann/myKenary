@@ -28,7 +28,11 @@ export async function getStudent(id: string): Promise<Student> {
 }
 
 export async function createStudent(data: CreateStudentDto): Promise<Student> {
+<<<<<<< HEAD
     return ApiService.fetchDataWithAxios<Student>({
+=======
+    return ApiService.fetchDataWithAxios<Student, CreateStudentDto>({
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
         url: '/students',
         method: 'post',
         data,
@@ -36,7 +40,11 @@ export async function createStudent(data: CreateStudentDto): Promise<Student> {
 }
 
 export async function updateStudent(id: string, data: UpdateStudentDto): Promise<Student> {
+<<<<<<< HEAD
     return ApiService.fetchDataWithAxios<Student>({
+=======
+    return ApiService.fetchDataWithAxios<Student, UpdateStudentDto>({
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
         url: `/students/${id}`,
         method: 'patch',
         data,
@@ -54,6 +62,7 @@ export async function uploadStudentsCsv(file: File): Promise<{ message: string; 
     const formData = new FormData()
     formData.append('file', file)
 
+<<<<<<< HEAD
     return ApiService.fetchDataWithAxios<{ message: string; created: number }>({
         url: '/students/upload-csv',
         method: 'post',
@@ -61,6 +70,12 @@ export async function uploadStudentsCsv(file: File): Promise<{ message: string; 
         headers: {
             'Content-Type': 'multipart/form-data',
         },
+=======
+    return ApiService.fetchDataWithAxios<{ message: string; created: number }, FormData>({
+        url: '/students/upload-csv',
+        method: 'post',
+        data: formData,
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
     })
 }
 

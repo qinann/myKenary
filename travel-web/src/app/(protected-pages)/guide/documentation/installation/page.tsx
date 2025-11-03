@@ -4,7 +4,11 @@ const Page = () => {
         <>
             <h6>Prerequisites</h6>
             <p>
+<<<<<<< HEAD
                 Before getting started with Ecme, ensure your development
+=======
+ Before getting started with My Kenary, ensure your development
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                 environment has the following tools installed:
             </p>
             <div className="mt-6">
@@ -30,7 +34,11 @@ const Page = () => {
                 </ul>
             </div>
             <div className="mt-8">
+<<<<<<< HEAD
                 <h6>Installing Ecme</h6>
+=======
+ <h6>Installing My Kenary</h6>
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                 <p>
                     After extracting the downloaded .zip file, you&apos;ll find
                     two folders <strong>TypeScript</strong> and{' '}

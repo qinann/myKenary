@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState} from 'react';
 import {
   View,
@@ -382,10 +383,102 @@ const BookletScreen = ({navigation}: any) => {
   );
 
   const selectedSectionData = bookletSections.find(section => section.id === selectedSection);
+=======
+import React, {useEffect, useState, useCallback} from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, StatusBar, ActivityIndicator, Alert, Linking, Platform } from 'react-native';
+import RNFS from 'react-native-fs';
+import RNFetchBlob from 'react-native-blob-util';
+import { ArrowLeft, BookOpen, ExternalLink } from 'lucide-react-native';
+
+const BookletScreen = ({navigation}: any) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [bookletUrl, setBookletUrl] = useState<string | null>(null);
+  const [lastApiUrl, setLastApiUrl] = useState<string | null>(null);
+
+  const fetchBooklet = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      // Gunakan link Google Drive yang diberikan
+      const googleDriveUrl = 'https://drive.google.com/file/d/1suMIjM43hPwqdqv4cQDDJ6ll8UTi9lZc/view?usp=sharing';
+      setLastApiUrl(googleDriveUrl);
+      console.log('[Booklet] Google Drive URL:', googleDriveUrl);
+      setBookletUrl(googleDriveUrl);
+    } catch (e) {
+      console.error('Error fetch booklet:', e);
+      setError('Gagal memuat link booklet.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchBooklet();
+  }, [fetchBooklet]);
+
+  const openBooklet = async () => {
+    if (!bookletUrl) return;
+    try {
+      const supported = await Linking.canOpenURL(bookletUrl);
+      if (supported) {
+        await Linking.openURL(bookletUrl);
+      } else {
+        Alert.alert('Tidak bisa membuka booklet', 'Silakan gunakan tombol Unduh untuk menyimpan ke perangkat.');
+      }
+    } catch (e) {
+      Alert.alert('Gagal membuka booklet', 'Silakan coba lagi atau cek koneksi.');
+    }
+  };
+
+  const downloadToDevice = async () => {
+    try {
+      if (!bookletUrl) throw new Error('Booklet belum siap');
+      const fileName = 'booklet.pdf';
+      
+      // Konversi Google Drive URL ke direct download link
+      let downloadUrl = bookletUrl;
+      if (bookletUrl.includes('drive.google.com')) {
+        const fileId = bookletUrl.match(/\/d\/([a-zA-Z0-9-_]+)/)?.[1];
+        if (fileId) {
+          downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+        }
+      }
+      
+      if (Platform.OS === 'android') {
+        // Gunakan Android DownloadManager via react-native-blob-util
+        const dest = `${RNFetchBlob.fs.dirs.DownloadDir}/${fileName}`;
+        await RNFetchBlob.config({
+          addAndroidDownloads: {
+            useDownloadManager: true,
+            notification: true,
+            title: fileName,
+            description: 'Mengunduh booklet dari Google Drive',
+            mime: 'application/pdf',
+            path: dest,
+          },
+        }).fetch('GET', downloadUrl);
+        Alert.alert('Berhasil disimpan', `File tersimpan di folder Download`);
+        return;
+      }
+
+      // iOS: simpan ke direktori dokumen aplikasi
+      const targetDir = RNFS.DocumentDirectoryPath;
+      const targetPath = `${targetDir}/${fileName}`;
+      const { promise } = RNFS.downloadFile({ fromUrl: downloadUrl, toFile: targetPath });
+      await promise;
+      Alert.alert('Berhasil disimpan', `File tersimpan di: ${targetPath}`);
+    } catch (err) {
+      console.error('Download booklet error:', err);
+      Alert.alert('Gagal menyimpan booklet', 'Silakan coba lagi atau periksa koneksi internet.');
+    }
+  };
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
+<<<<<<< HEAD
       
       {/* Header */}
       <View style={styles.header}>
@@ -447,11 +540,65 @@ const BookletScreen = ({navigation}: any) => {
           )}
         </View>
       </Modal>
+=======
+
+      <View style={styles.header}>
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+          <ArrowLeft size={24} color="#2C3E50" />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Booklet</Text>
+        <View style={styles.placeholder} />
+      </View>
+
+      <View style={styles.content}>
+        <View style={styles.hero}>
+          <View style={styles.heroIcon}><BookOpen size={32} color="#2563eb" /></View>
+          <Text style={styles.heroTitle}>Panduan Perjalanan</Text>
+          <Text style={styles.heroSub}>Akses booklet PDF dari Google Drive</Text>
+        </View>
+
+        {loading ? (
+          <View style={styles.centerBox}>
+            <ActivityIndicator size="large" color="#2563eb" />
+            <Text style={styles.infoText}>Memuat booklet...</Text>
+          </View>
+        ) : error ? (
+          <View style={styles.centerBox}>
+            <Text style={styles.errorText}>{error}</Text>
+            {lastApiUrl ? (
+              <Text style={styles.hint}>URL dicoba: {lastApiUrl}</Text>
+            ) : null}
+            <TouchableOpacity style={styles.retryBtn} onPress={fetchBooklet}>
+              <Text style={styles.retryText}>Coba lagi</Text>
+            </TouchableOpacity>
+          </View>
+        ) : bookletUrl ? (
+          <View style={styles.centerBox}>
+            <Text style={styles.infoText}>Booklet tersedia di Google Drive.</Text>
+            <View style={{ flexDirection: 'row', gap: 12 }}>
+              <TouchableOpacity style={styles.openBtn} onPress={openBooklet}>
+                <ExternalLink size={18} color="#fff" />
+                <Text style={styles.openText}>Buka Booklet</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.downloadBtn} onPress={downloadToDevice}>
+                <Text style={styles.downloadText}>Unduh ke Perangkat</Text>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.hint}>Google Drive: {bookletUrl}</Text>
+          </View>
+        ) : (
+          <View style={styles.centerBox}>
+            <Text style={styles.infoText}>Booklet belum tersedia.</Text>
+          </View>
+        )}
+      </View>
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
   container: {
     flex: 1,
     backgroundColor: '#F8F9FA',
@@ -663,6 +810,34 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     flex: 1,
   },
+=======
+  container: { flex: 1, backgroundColor: '#fff' },
+  header: {
+    height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    paddingHorizontal: 16, backgroundColor: '#F8F9FA', borderBottomWidth: 1, borderBottomColor: '#EAECEF',
+  },
+  backButton: {
+    width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EAECEF',
+  },
+  headerTitle: { fontSize: 18, fontWeight: 'bold', color: '#2C3E50' },
+  placeholder: { width: 36, height: 36 },
+  content: { flex: 1, padding: 16 },
+  hero: { alignItems: 'center', marginTop: 16, marginBottom: 24 },
+  heroIcon: { width: 64, height: 64, borderRadius: 32, alignItems: 'center', justifyContent: 'center', backgroundColor: '#eaf2ff', marginBottom: 12 },
+  heroTitle: { fontSize: 20, fontWeight: 'bold', color: '#1f2937' },
+  heroSub: { fontSize: 14, color: '#6b7280', marginTop: 6, textAlign: 'center' },
+  centerBox: { alignItems: 'center', justifyContent: 'center', marginTop: 24 },
+  infoText: { fontSize: 14, color: '#374151', marginTop: 12 },
+  errorText: { fontSize: 14, color: '#dc2626', marginTop: 12 },
+  retryBtn: { marginTop: 12, paddingHorizontal: 16, paddingVertical: 10, borderRadius: 8, borderWidth: 1, borderColor: '#2563eb' },
+  retryText: { color: '#2563eb', fontWeight: '600' },
+  openBtn: { flexDirection: 'row', gap: 8, marginTop: 16, backgroundColor: '#2563eb', paddingHorizontal: 16, paddingVertical: 12, borderRadius: 8 },
+  openText: { color: '#fff', fontWeight: '600', marginLeft: 8 },
+  downloadBtn: { marginTop: 16, backgroundColor: '#10b981', paddingHorizontal: 16, paddingVertical: 12, borderRadius: 8 },
+  downloadText: { color: '#fff', fontWeight: '600' },
+  hint: { fontSize: 12, color: '#6b7280', marginTop: 8 },
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 });
 
 export default BookletScreen;

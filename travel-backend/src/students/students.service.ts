@@ -24,6 +24,14 @@ export class StudentsService {
     }
   }
 
+<<<<<<< HEAD
+=======
+  async removeAll() {
+    // Delete all students; seat assignments referencing students will cascade
+    return this.prisma.student.deleteMany({});
+  }
+
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
   async findAll(page: number = 1, limit: number = 10, search?: string) {
     const skip = (page - 1) * limit;
     

@@ -97,6 +97,12 @@ class ApiService {
 
   constructor() {
     this.baseUrl = API_BASE_URL;
+<<<<<<< HEAD
+=======
+    if (__DEV__) {
+      console.log('[API] Base URL:', this.baseUrl);
+    }
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
   }
 
   // Custom error type to propagate HTTP status and server message
@@ -115,6 +121,12 @@ class ApiService {
     const url = `${this.baseUrl}${endpoint}`;
     
     try {
+<<<<<<< HEAD
+=======
+      if (__DEV__) {
+        console.log('[API] Request:', url, options?.method || 'GET');
+      }
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       const response = await fetch(url, {
         headers: {
           'Content-Type': 'application/json',
@@ -146,9 +158,38 @@ class ApiService {
         throw new ApiService.ApiError(response.status, serverMessage, details);
       }
 
+<<<<<<< HEAD
       return await response.json();
     } catch (error) {
       console.error('API request failed:', error);
+=======
+      const json = await response.json();
+      if (__DEV__) {
+        try {
+          const isStudents = endpoint.startsWith('/students');
+          const isBuses = endpoint.startsWith('/buses');
+          if (isStudents) {
+            const len = Array.isArray((json as any)?.data) ? (json as any).data.length : 'n/a';
+            console.log('[API] Response students count:', len);
+          } else if (isBuses) {
+            const len = Array.isArray((json as any)?.data) ? (json as any).data.length : 'n/a';
+            console.log('[API] Response buses count:', len);
+          } else {
+            console.log('[API] Response OK:', url);
+          }
+        } catch (_) {
+          // ignore logging errors
+        }
+      }
+      return json as T;
+    } catch (error) {
+      const message = (error as any)?.message || String(error);
+      console.error('API request failed:', message, 'URL:', url);
+      // Normalize network errors into ApiError for consistent handling
+      if (message && message.toLowerCase().includes('network request failed')) {
+        throw new ApiService.ApiError(0, 'Network request failed', { url, baseUrl: this.baseUrl });
+      }
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       throw error;
     }
   }

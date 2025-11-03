@@ -70,7 +70,11 @@ const LoginScreen: React.FC = () => {
         >
           {/* Header */}
           <View style={styles.header}>
+<<<<<<< HEAD
             <Text style={styles.title}>Travel App</Text>
+=======
+            <Text style={styles.title}>My Kenary</Text>
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
             <Text style={styles.subtitle}>Welcome back! Please sign in to continue</Text>
           </View>
 

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {useState} from 'react';
+=======
+import React, {useState, useEffect} from 'react';
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 import {
   View,
   Text,
@@ -24,7 +28,11 @@ import {
   AlertCircle,
 } from 'lucide-react-native';
 import { useStudents } from '../hooks/useApi';
+<<<<<<< HEAD
 import { Student as ApiStudent } from '../services/api';
+=======
+import { Student as ApiStudent, TourLeader, apiService } from '../services/api';
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
 interface Student {
   id: string;
@@ -35,6 +43,11 @@ interface Student {
   notes?: string;
   school?: string;
   grade?: string;
+<<<<<<< HEAD
+=======
+  bus?: string;
+  hotel?: string;
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
   email?: string;
   phone?: string;
 }
@@ -55,9 +68,49 @@ const StudentListScreen = ({navigation}: any) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterStatus, setFilterStatus] = useState<string>('all');
+<<<<<<< HEAD
   
   // Use API hook to fetch students
   const { students: apiStudents, loading, error, refetch } = useStudents();
+=======
+  const [page, setPage] = useState(1);
+  const [limit] = useState(10);
+  const [tourLeaders, setTourLeaders] = useState<TourLeader[]>([]);
+  const [tlByBusId, setTlByBusId] = useState<Record<string, TourLeader>>({});
+  const [tlLoading, setTlLoading] = useState(false);
+  const [tlError, setTlError] = useState<string | null>(null);
+  
+  // Use API hook to fetch students
+  const { students: apiStudents, loading, error, refetch, pagination } = useStudents(page, limit);
+
+  // Fetch tour leaders to map contact by bus
+  useEffect(() => {
+    let mounted = true;
+    const loadTL = async () => {
+      setTlLoading(true);
+      setTlError(null);
+      try {
+        const res = await apiService.getTourLeaders(1, 200);
+        if (!mounted) return;
+        setTourLeaders(res.data || []);
+        const map: Record<string, TourLeader> = {};
+        (res.data || []).forEach((tl) => {
+          if (tl.bus) {
+            map[tl.bus] = tl;
+          }
+        });
+        setTlByBusId(map);
+      } catch (e: any) {
+        if (!mounted) return;
+        setTlError(e?.message || 'Gagal memuat tour leader');
+      } finally {
+        if (mounted) setTlLoading(false);
+      }
+    };
+    loadTL();
+    return () => { mounted = false; };
+  }, []);
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
   // Convert API students to component format
   const convertApiStudent = (apiStudent: ApiStudent): Student => {
@@ -74,6 +127,11 @@ const StudentListScreen = ({navigation}: any) => {
         `0${Math.floor(Math.random() * 2) + 7}:${Math.floor(Math.random() * 6) * 10}` : undefined,
       school: apiStudent.school,
       grade: apiStudent.grade,
+<<<<<<< HEAD
+=======
+      bus: apiStudent.assignedBus,
+      hotel: apiStudent.assignedHotel,
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       email: apiStudent.email,
       phone: apiStudent.phone,
       notes: randomStatus === 'absent' ? 'Tidak hadir' : 
@@ -114,6 +172,15 @@ const StudentListScreen = ({navigation}: any) => {
   const convertedStudents = apiStudents.map(convertApiStudent);
   const classesData: ClassData[] = groupStudentsByGrade(convertedStudents);
 
+<<<<<<< HEAD
+=======
+  // Ringkasan berdasarkan daftar siswa langsung
+  const totalStudents = convertedStudents.length;
+  const presentCount = convertedStudents.filter(s => s.status === 'present').length;
+  const absentCount = convertedStudents.filter(s => s.status === 'absent').length;
+  const lateCount = convertedStudents.filter(s => s.status === 'late').length;
+
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
   const getStatusIcon = (status: Student['status']) => {
     switch (status) {
       case 'present':
@@ -240,12 +307,17 @@ const StudentListScreen = ({navigation}: any) => {
   );
 
   const renderStudentItem = ({item}: {item: Student}) => (
+<<<<<<< HEAD
     <View style={[styles.studentItem, {backgroundColor: getStatusColor(item.status)}]}>
+=======
+    <View style={styles.studentItem}>
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       <View style={styles.studentInfo}>
         <View style={styles.studentHeader}>
           <Text style={styles.studentName}>{item.name}</Text>
           <Text style={styles.studentId}>NIS: {item.studentId}</Text>
         </View>
+<<<<<<< HEAD
         
         <View style={styles.statusContainer}>
           {getStatusIcon(item.status)}
@@ -258,6 +330,24 @@ const StudentListScreen = ({navigation}: any) => {
         {item.notes && (
           <Text style={styles.notesText}>📝 {item.notes}</Text>
         )}
+=======
+
+        <View style={styles.infoRow}>
+          <Text style={styles.infoLabel}>Kelas:</Text>
+          <Text style={styles.infoValue}>{item.grade || '—'}</Text>
+        </View>
+        <View style={styles.infoRow}>
+          <Text style={styles.infoLabel}>Bus:</Text>
+          <Text style={styles.infoValue}>{item.bus || '—'}</Text>
+        </View>
+        <View style={styles.infoRow}>
+          <Text style={styles.infoLabel}>Kontak TL:</Text>
+          <Text style={styles.infoValue}>{(() => {
+            const tl = item.bus ? tlByBusId[item.bus] : undefined;
+            return tl?.phone || tl?.whatsapp || tl?.email || '—';
+          })()}</Text>
+        </View>
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       </View>
     </View>
   );
@@ -300,6 +390,7 @@ const StudentListScreen = ({navigation}: any) => {
       {/* Content - only show when not loading and no error */}
       {!loading && !error && (
         <>
+<<<<<<< HEAD
           {/* Summary Stats */}
           <View style={styles.summaryContainer}>
         <View style={styles.summaryCard}>
@@ -333,6 +424,46 @@ const StudentListScreen = ({navigation}: any) => {
         <View style={styles.content}>
           <Text style={styles.sectionTitle}>Daftar Kelas</Text>
           {classesData.map(renderClassCard)}
+=======
+          {/* List only: remove summary */}
+
+      {/* Students List */}
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        <View style={styles.content}>
+          <Text style={styles.sectionTitle}>Daftar Siswa</Text>
+          <FlatList
+            data={convertedStudents}
+            renderItem={renderStudentItem}
+            keyExtractor={(item) => item.id}
+            showsVerticalScrollIndicator={false}
+          />
+          {/* Pagination Controls */}
+          <View style={styles.paginationContainer}>
+            <TouchableOpacity
+              style={[
+                styles.paginationButton,
+                (pagination?.hasPrev === false || page <= 1) && styles.paginationButtonDisabled,
+              ]}
+              disabled={pagination?.hasPrev === false || page <= 1}
+              onPress={() => setPage((p) => Math.max(1, p - 1))}
+            >
+              <Text style={styles.paginationButtonText}>Sebelumnya</Text>
+            </TouchableOpacity>
+            <Text style={styles.paginationInfo}>
+              Halaman {pagination?.page ?? page} / {pagination?.totalPages ?? '-'}
+            </Text>
+            <TouchableOpacity
+              style={[
+                styles.paginationButton,
+                (pagination?.hasNext === false) && styles.paginationButtonDisabled,
+              ]}
+              disabled={pagination?.hasNext === false}
+              onPress={() => setPage((p) => p + 1)}
+            >
+              <Text style={styles.paginationButtonText}>Berikutnya</Text>
+            </TouchableOpacity>
+          </View>
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
         </View>
       </ScrollView>
 
@@ -573,6 +704,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
+<<<<<<< HEAD
+=======
+  infoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  infoLabel: {
+    fontSize: 12,
+    color: '#7F8C8D',
+    width: 70,
+  },
+  infoValue: {
+    fontSize: 12,
+    color: '#2C3E50',
+    fontWeight: '500',
+  },
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
   statusText: {
     fontSize: 14,
     fontWeight: '600',
@@ -624,6 +773,35 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+<<<<<<< HEAD
+=======
+  paginationContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 12,
+    paddingVertical: 8,
+  },
+  paginationButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    backgroundColor: '#4A90E2',
+    borderRadius: 8,
+  },
+  paginationButtonDisabled: {
+    backgroundColor: '#A7C7FF',
+  },
+  paginationButtonText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  paginationInfo: {
+    fontSize: 14,
+    color: '#2C3E50',
+    fontWeight: '500',
+  },
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 });
 
 export default StudentListScreen;

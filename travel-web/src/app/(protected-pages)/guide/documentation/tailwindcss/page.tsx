@@ -8,7 +8,11 @@ const Page = () => {
             <p>
                 Tailwind CSS is a utility-first CSS framework that provides
                 predefined classes for building and designing UI directly within
+<<<<<<< HEAD
                 JSX. Ecme utilizes Tailwind as its core CSS framework, with most
+=======
+ JSX. My Kenary utilizes Tailwind as its core CSS framework, with most
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                 UI elements built entirely using its features. You can easily
                 update the theme and base styles by modifying the{' '}
                 <code>tailwind.config.cjs</code> file located in the root

@@ -5,6 +5,10 @@ import { motion } from 'framer-motion'
 import { MODE_DARK, MODE_LIGHT } from '@/constants/theme.constant'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+<<<<<<< HEAD
+=======
+import withBasePath from '@/utils/withBasePath'
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 import type { Mode } from '@/@types/theme'
 
 const LandingFooter = ({ mode }: { mode: Mode }) => {
@@ -37,7 +41,11 @@ const LandingFooter = ({ mode }: { mode: Mode }) => {
                             <h2 className="text-5xl">Ready to Get Started?</h2>
                             <p className="mt-4 max-w-[400px] mx-auto">
                                 Build modern, scalable applications effortlessly
+<<<<<<< HEAD
                                 with Ecme. Take your project to the next level
+=======
+ with My Kenary. Take your project to the next level
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                                 today!
                             </p>
                             <div className="mt-6">
@@ -53,7 +61,11 @@ const LandingFooter = ({ mode }: { mode: Mode }) => {
                         <Link href="/">
                             {mode === MODE_LIGHT && (
                                 <img
+<<<<<<< HEAD
                                     src="/img/logo/logo-light-full.png"
+=======
+                                    src={withBasePath('/img/logo/logo-light-full.png')}
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                                     width={120}
                                     height={40}
                                     alt="logo"
@@ -61,7 +73,11 @@ const LandingFooter = ({ mode }: { mode: Mode }) => {
                             )}
                             {mode === MODE_DARK && (
                                 <img
+<<<<<<< HEAD
                                     src="/img/logo/logo-dark-full.png"
+=======
+                                    src={withBasePath('/img/logo/logo-dark-full.png')}
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
                                     width={120}
                                     height={40}
                                     alt="logo"

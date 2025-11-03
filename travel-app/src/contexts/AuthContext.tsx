@@ -117,7 +117,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         return false;
       }
     } catch (error) {
+<<<<<<< HEAD
       console.error('Login error:', error);
+=======
+      // Log detailed network error information if available
+      const details = (error as any)?.details;
+      console.error('Login error:', error, details ? `details: ${JSON.stringify(details)}` : '');
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       setAuthState(prev => ({ ...prev, isLoading: false }));
       return false;
     }

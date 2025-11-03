@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, { useEffect, useState, useCallback } from 'react';
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 import {
   View,
   Text,
@@ -9,6 +13,10 @@ import {
   Linking,
   Dimensions,
   StatusBar,
+<<<<<<< HEAD
+=======
+  Alert,
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 } from 'react-native';
 import {
   Bus,
@@ -28,6 +36,10 @@ import {
   Shield,
 } from 'lucide-react-native';
 import {useAuth} from '../contexts/AuthContext';
+<<<<<<< HEAD
+=======
+import { apiService, TourLeader as ApiTourLeader, Bus as ApiBus } from '../services/api';
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
 const {width} = Dimensions.get('window');
 
@@ -39,10 +51,21 @@ interface MenuCard {
   onPress: () => void;
 }
 
+<<<<<<< HEAD
 interface TourGuide {
   id: string;
   name: string;
   phone: string;
+=======
+interface UiLead {
+  id: string;
+  name: string;
+  phone?: string;
+  whatsapp?: string;
+  email?: string;
+  busId?: string | null;
+  busName?: string;
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 }
 
 const DashboardScreen = ({navigation}: any) => {
@@ -93,7 +116,25 @@ const DashboardScreen = ({navigation}: any) => {
       title: 'Booklet',
       icon: BookOpen,
       color: '#4A90E2',
+<<<<<<< HEAD
       onPress: () => navigation.navigate('Booklet'),
+=======
+      onPress: async () => {
+        const viewUrl = 'https://drive.google.com/file/d/1suMIjM43hPwqdqv4cQDDJ6ll8UTi9lZc/view?usp=sharing';
+        const downloadUrl = 'https://drive.google.com/uc?export=download&id=1suMIjM43hPwqdqv4cQDDJ6ll8UTi9lZc';
+        try {
+          // Beberapa perangkat mengembalikan false untuk canOpenURL pada https.
+          // Buka langsung link view; jika gagal, coba direct download.
+          await Linking.openURL(viewUrl);
+        } catch (e) {
+          try {
+            await Linking.openURL(downloadUrl);
+          } catch (err) {
+            Alert.alert('Tidak bisa membuka link', 'Pastikan perangkat memiliki aplikasi browser/Google Drive, lalu coba lagi.');
+          }
+        }
+      },
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
     },
     {
       id: '7',
@@ -118,6 +159,7 @@ const DashboardScreen = ({navigation}: any) => {
     },
   ];
 
+<<<<<<< HEAD
   const tourGuides: TourGuide[] = [
     {
       id: '1',
@@ -135,6 +177,49 @@ const DashboardScreen = ({navigation}: any) => {
       phone: '+62 814-5678-9012',
     },
   ];
+=======
+  // State for Tour Leaders fetched from backend
+  const [loadingTL, setLoadingTL] = useState(false);
+  const [errorTL, setErrorTL] = useState<string | null>(null);
+  const [busMap, setBusMap] = useState<Record<string, string>>({});
+  const [leads, setLeads] = useState<UiLead[]>([]);
+
+  const fetchLeads = useCallback(async () => {
+    setLoadingTL(true);
+    setErrorTL(null);
+    try {
+      const [leadersRes, busesRes] = await Promise.all([
+        apiService.getTourLeaders(1, 100),
+        apiService.getBuses(1, 100),
+      ]);
+
+      const buses: ApiBus[] = busesRes.data || [];
+      const busNameMap: Record<string, string> = {};
+      buses.forEach((b) => { busNameMap[b.id] = b.name; });
+      setBusMap(busNameMap);
+
+      const leaders: ApiTourLeader[] = leadersRes.data || [];
+      const leadsUi: UiLead[] = leaders.map((tl) => ({
+        id: String(tl.id),
+        name: tl.name,
+        phone: tl.phone,
+        whatsapp: tl.whatsapp,
+        email: tl.email,
+        busId: tl.bus ?? null,
+        busName: tl.bus ? (busNameMap[tl.bus] || tl.bus) : 'Tidak ada bus',
+      }));
+      setLeads(leadsUi);
+    } catch (e: any) {
+      setErrorTL(e?.message || 'Gagal memuat kontak TL');
+    } finally {
+      setLoadingTL(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchLeads();
+  }, [fetchLeads]);
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
 
   const openSocialMedia = (url: string) => {
     Linking.openURL(url);
@@ -162,17 +247,34 @@ const DashboardScreen = ({navigation}: any) => {
     );
   };
 
+<<<<<<< HEAD
   const renderTourGuide = (guide: TourGuide) => (
     <TouchableOpacity
       key={guide.id}
       style={styles.guideCard}
       onPress={() => callTourGuide(guide.phone)}>
+=======
+  const renderTourGuide = (guide: UiLead) => (
+    <TouchableOpacity
+      key={guide.id}
+      style={styles.guideCard}
+      onPress={() => guide.phone ? callTourGuide(guide.phone) : undefined}>
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       <View style={styles.guideImageContainer}>
         <User size={32} color="#4A90E2" />
       </View>
       <View style={styles.guideInfo}>
         <Text style={styles.guideName}>{guide.name}</Text>
+<<<<<<< HEAD
         <Text style={styles.guidePhone}>{guide.phone}</Text>
+=======
+        <Text style={styles.guidePhone}>
+          {(guide.phone || guide.whatsapp || guide.email || '—')}
+        </Text>
+        {guide.busName ? (
+          <Text style={styles.guidePhone}>Bus: {guide.busName}</Text>
+        ) : null}
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
       </View>
       <Phone size={20} color="#4A90E2" />
     </TouchableOpacity>
@@ -235,6 +337,7 @@ const DashboardScreen = ({navigation}: any) => {
           </TouchableOpacity>
         </View>
 
+<<<<<<< HEAD
         {/* Tour Guides Section */}
         <View style={styles.guidesSection}>
           <View style={styles.sectionHeader}>
@@ -242,6 +345,18 @@ const DashboardScreen = ({navigation}: any) => {
             <Text style={styles.teamName}>team myKenary</Text>
           </View>
           {tourGuides.map(renderTourGuide)}
+=======
+        {/* Kontak Tour Leader */}
+        <View style={styles.guidesSection}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Kontak Tour Leader</Text>
+            <Text style={styles.teamName}>{loadingTL ? 'Memuat...' : ''}</Text>
+          </View>
+          {errorTL ? (
+            <Text style={{ color: '#E74C3C', marginBottom: 8 }}>{errorTL}</Text>
+          ) : null}
+          {leads.map(renderTourGuide)}
+>>>>>>> e895365 (feat(web): My Kenary branding & logo)
         </View>
 
         {/* Bottom Spacing for Floating Navigation */}
